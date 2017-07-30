@@ -1,5 +1,5 @@
 # Baby's First Words
-An app to keep track of how many words your toddler knows.
+A Laravel app to keep track of how many words your toddler knows.
 
 Our son's pediatrician wants him to know at least 50 words by his next visit in October.  
 This is a simple app I put together that will tell us which words he knows, 
