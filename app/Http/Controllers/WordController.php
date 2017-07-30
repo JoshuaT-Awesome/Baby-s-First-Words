@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use DB;
 use App\Word;
 use Illuminate\Http\Request;
@@ -41,12 +42,18 @@ class WordController extends Controller
     {
         $this->validate(request(),  [
 
+                //'body' => 'required|unique:words', 
                 'body' => 'required', 
                 
             ]);
 
-        Word::create(request(['body', 'notes']));
-       //\Session::flash('message', 'Successfully created word(s)!');
+         //if the word has already been entered, it won't save       
+        Word::firstOrCreate(request(['body', 'notes'])); 
+        \flash()->overlay('Success!!!');
+        
+       
+
+        //need a popup when a record is not created
         return redirect('/');
     }
 

@@ -11,8 +11,11 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
+        <script src="//code.jquery.com/jquery.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
         <style>
             html, body {
                 background-color: #fff;
@@ -78,10 +81,13 @@
                     Baby's First Words
                     
                 </div>
-                <h3># of words: 
-                {{  $count }}
+                <h3><strong># of words/phrases: 
+                {{  $count }}</strong>
                 </h3>
                 <hr>
+                <div class="alert">
+                    @include('flash::message')
+                </div>
 
                  {{ Form::open(['url' => '/']) }}
 
@@ -117,16 +123,16 @@
                     <tbody>
                     @foreach($words as $key => $value)
                         <tr>
-                            <td>{{ $value->id }}</td>
+                            <td>{{ $key + 1}}</td>
                             <td>{{ $value->body }}</td>
                             <td>{{ $value->notes }}</td>
                             <td>{{ $value->created_at->toFormattedDateString() }}</td>
                             <td>
 
                             {{ Form::open(array('url' => '/' . $value->id, 'class' => 'pull-right')) }}
-                    {{ Form::hidden('_method', 'DELETE') }}
-                    {{ Form::submit('Delete', array('class' => 'btn btn-warning')) }}
-                {{ Form::close() }}                                                        
+                                {{ Form::hidden('_method', 'DELETE') }}
+                                {{ Form::submit('Delete', array('class' => 'btn btn-warning')) }}
+                            {{ Form::close() }}                                                        
                                 <a class="btn btn-small btn-info" href="{{ URL::to('/' . $value->id . '/edit') }}">Edit </a>
 
                             </td>
@@ -137,5 +143,14 @@
             
             </div>
         </div>
+        <!-- If using flash()->important() or flash()->overlay(), you'll need to pull in the JS for Twitter Bootstrap. -->
+        <script src="//code.jquery.com/jquery.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+        <script>
+            $('#flash-overlay-modal').modal();          
+        </script>
+        
+        
     </body>
 </html>
