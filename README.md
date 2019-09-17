@@ -5,4 +5,4 @@ Our son's pediatrician wants him to know at least 50 words by his next visit in 
 This is a simple app I put together that will tell us which words he knows, 
 anything noteworthy (like pointing to his eyes when saying "eyes") and will tell us the total number of words he knows.
 
-This is made with Laravel Valet (using Laravel 5.4 and PHP 7.1.7).
+This is made with Laravel 5.4 and PHP 7.1.7.
